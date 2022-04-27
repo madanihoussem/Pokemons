@@ -1,0 +1,38 @@
+<h1 class="center">Liste de Pokémons</h1>
+
+<div class="container">
+  <div class="row center">
+    <a (click)="goNew()" class="waves-effect waves-light btn">Créer un pokémon</a>
+    <a (click)="deconnexion()" class="waves-effect waves-light btn red">Déconnexion</a>
+  </div>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card-panel">
+        <div class="form-group">
+          <label for="search">Rechercher un pokémon</label>
+          <input type="text" name="search" id="search" #searchInput (keyup)="search(searchInput.value)">
+        </div>
+        <div class="collection">
+          <a *ngFor="let el of searchTerms" (click)="selectPokemon(el)" class="collection-item">{{el.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let pokemon of pokemons" class="col s6 m4">
+      <div class="card horizontal" (click)="selectPokemon(pokemon)"  pkmnBorderCard>
+        <div class="card-image">
+          <img [src]="pokemon.picture">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ pokemon.name }}</p>
+            <p><small>{{ pokemon.created | date: "dd/MM/yy" }}</small></p>
+            <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">{{ type }}</span>
+            <p class="{{ pokemon.rare | pokemonRareColor }}">{{ pokemon.rare }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

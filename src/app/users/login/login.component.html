@@ -1,0 +1,27 @@
+<h2 class="header center">Connexion</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card-panel">
+  
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email"  formControlName="email">
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" formControlName="password">
+          </div>
+  
+          <div class="divider"></div>
+          <div class="section center row">
+            <button type="submit" class="waves-effect waves-light btn" >Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!--   -->
+  <!-- [disabled]="!userForm.form.valid" -->
